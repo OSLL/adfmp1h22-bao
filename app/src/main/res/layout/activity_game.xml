@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button21"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button22"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button23"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button24"
+            style="@style/Game.SquareButton" />
+
+        <Button
+            android:id="@+id/button25"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button26"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button27"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button28"
+            style="@style/Game.RoundButton" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="528dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button31"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button32"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button33"
+            style="@style/Game.SquareButton" />
+
+        <Button
+            android:id="@+id/button34"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button35"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button36"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button37"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button38"
+            style="@style/Game.RoundButton" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="588dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button41"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button42"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button43"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button44"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button45"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button46"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button47"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button48"
+            style="@style/Game.RoundButton" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="1dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button11"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button12"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button13"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button14"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button15"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button16"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button17"
+            style="@style/Game.RoundButton" />
+
+        <Button
+            android:id="@+id/button18"
+            style="@style/Game.RoundButton" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hand1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="0"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hand2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="0"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End turn"
+        tools:layout_editor_absoluteX="286dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
