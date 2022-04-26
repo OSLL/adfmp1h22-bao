@@ -62,5 +62,6 @@ class GameActivity : AppCompatActivity() {
         )
         val model = Model(field, hand1, hand2)
 
+
     }
 }

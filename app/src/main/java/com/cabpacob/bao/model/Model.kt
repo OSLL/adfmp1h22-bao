@@ -4,7 +4,8 @@ import android.widget.Button
 import android.widget.TextView
 
 class Model(buttons: List<List<Button>>, firstPlayerHand: TextView, secondPlayerHand: TextView) {
-    private val field = buttons.map { row -> row.map { ButtonHandler(it) } }
+    private val field =
+        buttons.mapIndexed { x, row -> row.mapIndexed { y, button -> ButtonHandler(button, x, y) } }
     private val firstPlayer: Player
     private val secondPlayer: Player
 
@@ -17,13 +18,13 @@ class Model(buttons: List<List<Button>>, firstPlayerHand: TextView, secondPlayer
         field[1][3].value = 6 //first player init
         field[1][2].value = 2
         field[1][1].value = 2
-        firstPlayer.hand.value = 24
+        firstPlayer.hand.value = 22
 
         field[2][4].value = 6 //second player init
         field[2][5].value = 2
         field[2][6].value = 2
-        secondPlayer.hand.value = 24
-
+        secondPlayer.hand.value = 22
     }
+
 
 }
