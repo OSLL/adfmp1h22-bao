@@ -1,12 +1,17 @@
 package com.cabpacob.bao
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import com.cabpacob.bao.model.ButtonStatus
 import com.cabpacob.bao.model.Model
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
+    private lateinit var model: Model
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -60,8 +65,15 @@ class GameActivity : AppCompatActivity() {
             row3,
             row4
         )
-        val model = Model(field, hand1, hand2)
+        model = Model(this, field, hand1, hand2)
+        nextTurn()
+    }
 
-
+    fun nextTurn() {
+        model.clearHighlighting()
+        val buttons = model.getSelectableButtons()
+        buttons.forEach {
+            it.highlight(ButtonStatus.CAN_BE_CHOSEN)
+        }
     }
 }
