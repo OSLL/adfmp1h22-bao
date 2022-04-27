@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gameWithBot.setOnClickListener {
+        hotSeat.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("Mode", "HotSeat")
             startActivity(intent)
