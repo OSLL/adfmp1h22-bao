@@ -72,9 +72,9 @@ class Model(
             it.hand.value--
         }
 
+        changePlayer()
+
         clearHighlighting()
-
-
 
         activity.readyNextTurn()
     }
