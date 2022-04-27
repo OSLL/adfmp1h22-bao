@@ -57,6 +57,11 @@ class Model(
         }
     }
 
+    private fun changePlayer() {
+        currentPlayer =
+            if (currentPlayer == CurrentPlayer.SECOND_PLAYER) CurrentPlayer.FIRST_PLAYER else CurrentPlayer.SECOND_PLAYER
+    }
+
     fun select(row: Int, col: Int) {
         Log.d("HEHEHE", "SELECT $row $col")
 
@@ -67,10 +72,12 @@ class Model(
             it.hand.value--
         }
 
-        currentPlayer =
-            if (currentPlayer == CurrentPlayer.SECOND_PLAYER) CurrentPlayer.FIRST_PLAYER else CurrentPlayer.SECOND_PLAYER
+        clearHighlighting()
 
-        activity.nextTurn()
+
+
+        activity.readyNextTurn()
     }
+
 
 }
