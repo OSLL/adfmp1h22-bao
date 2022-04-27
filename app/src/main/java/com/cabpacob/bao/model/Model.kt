@@ -9,7 +9,8 @@ class Model(
     private val activity: GameActivity,
     buttons: List<List<Button>>,
     firstPlayerHand: TextView,
-    secondPlayerHand: TextView
+    secondPlayerHand: TextView,
+    val status: TextView
 ) {
     private val field =
         buttons.mapIndexed { x, row ->
@@ -41,6 +42,8 @@ class Model(
         field[2][5].value = 2
         field[2][6].value = 2
         secondPlayer.hand.value = 22
+
+        status.text = "Player1's turn"
     }
 
     fun clearHighlighting() {
@@ -62,8 +65,13 @@ class Model(
     }
 
     private fun changePlayer() {
-        currentPlayer =
-            if (currentPlayer == CurrentPlayer.SECOND_PLAYER) CurrentPlayer.FIRST_PLAYER else CurrentPlayer.SECOND_PLAYER
+        if (currentPlayer == CurrentPlayer.SECOND_PLAYER) {
+            currentPlayer = CurrentPlayer.FIRST_PLAYER
+            status.text = "Player1's turn"
+        } else {
+            currentPlayer = CurrentPlayer.SECOND_PLAYER
+            status.text = "Player2's turn"
+        }
     }
 
     private fun getNextClockwisePit(current: Pair<Int, Int>): Pair<Int, Int> {
@@ -108,6 +116,10 @@ class Model(
     private var inHand = 0
 
 
+    fun nextTurn() {
+        changePlayer()
+    }
+
     fun select(row: Int, col: Int) {
         Log.d("HEHEHE", "SELECT $row $col")
 
@@ -127,6 +139,8 @@ class Model(
                         inHand = getOtherPlayer().field[actualRow][col].value
                         getOtherPlayer().field[actualRow][col].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
+                        status.text = "Select kichwa"
+
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
@@ -141,10 +155,12 @@ class Model(
                         inHand = getCurrentPlayer().field[actualRow][col].value
                         getCurrentPlayer().field[actualRow][col].value = 0
                         waitingAction = WaitingAction.SELECT_PIT
+                        status.text = "Select pit"
                     }
                     else -> {
                         changePlayer()
                         activity.readyNextTurn()
+                        status.text = "End turn"
                     }
                 }
             }
@@ -178,6 +194,7 @@ class Model(
                         inHand = getOtherPlayer().field[current.first][current.second].value
                         getOtherPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
+                        status.text = "Select kichwa"
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
@@ -192,10 +209,11 @@ class Model(
                         inHand = getCurrentPlayer().field[current.first][current.second].value
                         getCurrentPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_PIT
+                        status.text = "Select pit"
                     }
                     else -> {
-                        changePlayer()
                         activity.readyNextTurn()
+                        status.text = "End turn"
                     }
                 }
             }
@@ -229,6 +247,7 @@ class Model(
                         inHand = getOtherPlayer().field[current.first][current.second].value
                         getOtherPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
+                        status.text = "Select kichwa"
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
@@ -242,10 +261,12 @@ class Model(
                         getPit(getPrevClockwisePit(coordinates)).highlight(ButtonStatus.CAN_BE_CHOSEN)
 
                         waitingAction = WaitingAction.SELECT_PIT
+                        status.text = "Select pit"
                     }
                     else -> {
                         changePlayer()
                         activity.readyNextTurn()
+                        status.text = "End turn"
                     }
                 }
             }

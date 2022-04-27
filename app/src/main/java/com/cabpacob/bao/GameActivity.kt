@@ -70,18 +70,21 @@ class GameActivity : AppCompatActivity() {
             val intent = Intent(this, ExitActivity::class.java)
             startActivityForResult(intent, 0)
         }
-        model = Model(this, field, hand1, hand2)
-        nextTurn()
+        model = Model(this, field, hand1, hand2, statusView)
+        nextTurn(first = true)
     }
 
     fun readyNextTurn() {
         endTurn.setOnClickListener {
-            nextTurn()
+            nextTurn(false)
         }
     }
 
-    fun nextTurn() {
+    fun nextTurn(first: Boolean) {
         endTurn.setOnClickListener {}
+        if (!first) {
+            model.nextTurn()
+        }
         val buttons = model.getSelectableButtons()
         buttons.forEach {
             it.highlight(ButtonStatus.CAN_BE_CHOSEN)

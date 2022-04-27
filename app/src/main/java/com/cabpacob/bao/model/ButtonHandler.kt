@@ -7,7 +7,6 @@ import android.widget.Button
 import androidx.core.content.ContextCompat.startActivity
 import com.cabpacob.bao.GameActivity
 import com.cabpacob.bao.R
-import java.lang.Thread.sleep
 
 class ButtonHandler(
     private val model: Model,
