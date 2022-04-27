@@ -10,7 +10,9 @@ class ExitActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exit)
 
-
+        noButton.setOnClickListener {
+            finish()
+        }
         yesButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

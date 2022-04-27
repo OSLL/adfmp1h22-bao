@@ -68,7 +68,7 @@ class GameActivity : AppCompatActivity() {
 
         exit.setOnClickListener {
             val intent = Intent(this, ExitActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
         model = Model(this, field, hand1, hand2)
         nextTurn()
