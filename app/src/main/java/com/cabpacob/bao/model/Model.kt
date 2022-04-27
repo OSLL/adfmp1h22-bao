@@ -62,8 +62,10 @@ class Model(
 
         val actualRow = if (currentPlayer == CurrentPlayer.SECOND_PLAYER) row else 3 - row
 
-        getCurrentPlayer().field[actualRow][col].value++
-        getCurrentPlayer().hand.value--
+        getCurrentPlayer().let {
+            it.field[actualRow][col].value++
+            it.hand.value--
+        }
 
         currentPlayer =
             if (currentPlayer == CurrentPlayer.SECOND_PLAYER) CurrentPlayer.FIRST_PLAYER else CurrentPlayer.SECOND_PLAYER

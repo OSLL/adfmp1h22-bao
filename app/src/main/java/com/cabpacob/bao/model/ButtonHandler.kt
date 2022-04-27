@@ -30,10 +30,13 @@ class ButtonHandler(
     fun highlight(status: ButtonStatus) {
         this.status = status
         when (status) {
-            ButtonStatus.EMPTY -> button.background = button.resources.getDrawable(
-                if (isNumba()) R.drawable.square_button
-                else R.drawable.round_button
-            )
+            ButtonStatus.EMPTY -> {
+                button.background = button.resources.getDrawable(
+                    if (isNumba()) R.drawable.square_button
+                    else R.drawable.round_button
+                )
+                button.setOnClickListener {}
+            }
             ButtonStatus.CAN_BE_CHOSEN -> {
                 button.background.setTint(button.resources.getColor(R.color.teal_200))
                 button.setOnClickListener {
