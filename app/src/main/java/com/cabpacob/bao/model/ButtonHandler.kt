@@ -40,6 +40,7 @@ class ButtonHandler(
             ButtonStatus.CAN_BE_CHOSEN -> {
                 button.background.setTint(button.resources.getColor(R.color.teal_200))
                 button.setOnClickListener {
+                    model.fixHighlighting()
                     highlight(ButtonStatus.CHOSEN)
                 }
             }

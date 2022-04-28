@@ -50,6 +50,19 @@ class Model(
         field.forEach { row -> row.forEach { it.highlight(ButtonStatus.EMPTY) } }
     }
 
+    fun fixHighlighting() {
+        field.forEach { row ->
+            row.forEach {
+                when (it.status) {
+                    ButtonStatus.EMPTY -> {}
+                    ButtonStatus.CAN_BE_CHOSEN -> {}
+                    ButtonStatus.CHOSEN -> it.highlight(ButtonStatus.CAN_BE_CHOSEN)
+                    else -> throw Exception()
+                }
+            }
+        }
+    }
+
     fun getCurrentPlayer(): Player {
         return if (currentPlayer == CurrentPlayer.FIRST_PLAYER) firstPlayer else secondPlayer
     }
@@ -241,7 +254,7 @@ class Model(
                 }
 
                 when {
-                    current.first == 1 && getOtherPlayer().field[current.first][current.second].value > 1  -> {
+                    current.first == 1 && getOtherPlayer().field[current.first][current.second].value > 1 -> {
                         inHand = getOtherPlayer().field[current.first][current.second].value
                         getOtherPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
