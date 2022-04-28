@@ -4,8 +4,8 @@
     <style name="Game.SquareButton" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/square_button</item>
         <item name="android:actionBarItemBackground">@null</item>
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">39dp</item>
+        <item name="android:layout_height">39dp</item>
         <item name="backgroundTint">@null</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">0</item>
@@ -21,8 +21,8 @@
     <style name="Game.RoundButton" parent="@style/Widget.AppCompat.Button">
         <item name="android:background">@drawable/round_button</item>
         <item name="android:actionBarItemBackground">@null</item>
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">39dp</item>
+        <item name="android:layout_height">39dp</item>
         <item name="backgroundTint">@null</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">0</item>
