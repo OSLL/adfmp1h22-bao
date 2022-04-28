@@ -10,10 +10,11 @@ import com.cabpacob.bao.R
 
 class ButtonHandler(
     private val model: Model,
-    private val button: Button,
+    val button: Button,
     private val row: Int,
     private val col: Int
 ) {
+    val coordinates = Pair(row, col)
     var value: Int
         get() = button.text.toString().toInt()
         set(value) {
@@ -40,6 +41,7 @@ class ButtonHandler(
             ButtonStatus.CAN_BE_CHOSEN -> {
                 button.background.setTint(button.resources.getColor(R.color.teal_200))
                 button.setOnClickListener {
+                    model.fixHighlighting()
                     highlight(ButtonStatus.CHOSEN)
                 }
             }

@@ -68,23 +68,46 @@ class GameActivity : AppCompatActivity() {
 
         exit.setOnClickListener {
             val intent = Intent(this, ExitActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
-        model = Model(this, field, hand1, hand2)
-        nextTurn()
+        model = Model(
+            this,
+            field,
+            hand1,
+            hand2,
+            statusView,
+            intent.getStringExtra("Mode") == "GameWithBot"
+        )
+        nextTurn(first = true)
+    }
+
+    fun endGame() {
+        val win = model.getOtherPlayer().name
+        val lose = model.getCurrentPlayer().name
+        val intent = Intent(this, EndGameActivity::class.java)
+        intent.putExtra("winner", win)
+        intent.putExtra("loser", lose)
+        startActivity(intent)
     }
 
     fun readyNextTurn() {
         endTurn.setOnClickListener {
-            nextTurn()
+            nextTurn(false)
         }
     }
 
-    fun nextTurn() {
+    fun nextTurn(first: Boolean) {
         endTurn.setOnClickListener {}
+        if (!first) {
+            model.nextTurn()
+        }
         val buttons = model.getSelectableButtons()
+        if (buttons.isEmpty()) {
+            endGame()
+        }
         buttons.forEach {
             it.highlight(ButtonStatus.CAN_BE_CHOSEN)
         }
+        model.waitTurn()
     }
 }

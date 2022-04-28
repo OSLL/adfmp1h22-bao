@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bao">
         <activity
+            android:name=".EndGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExitActivity"
             android:exported="false" />
         <activity
