@@ -70,13 +70,20 @@ class GameActivity : AppCompatActivity() {
             val intent = Intent(this, ExitActivity::class.java)
             startActivityForResult(intent, 0)
         }
+
+        val mode = intent.getStringExtra("Mode")
+        val firstName = intent.getStringExtra("First")
+        val secondName = intent.getStringExtra("Second")
+
         model = Model(
             this,
             field,
+            firstName!!,
             hand1,
+            secondName,
             hand2,
             statusView,
-            intent.getStringExtra("Mode") == "GameWithBot"
+            mode == "GameWithBot"
         )
         nextTurn(first = true)
     }
