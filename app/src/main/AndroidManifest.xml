@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bao">
         <activity
+            android:name=".StatisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".EndGameActivity"
             android:exported="false" />
         <activity

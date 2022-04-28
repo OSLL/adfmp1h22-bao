@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RulesActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rulesTerminology"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terminology\n\nIn Swahili literature on Bao, the following terms are commonly used:\n1. kete: the seeds.\n2. kichwa: the first and last pits in a player's inner row.\n3. kimbi: the first two and last two pits in a player's inner row, i.e., the kichwa pits as well the pits adjacent to them. In some cases, the term &quot;kimbi&quot; is only used for the second and next to last pits in the inner row, i.e., kichwa pits are not included as kimbi pits.\n4. mtaji: referring to a turn, is a turn that begins with a capture, and that may include further captures. Referring to a phase of the game, is the phase where there are no seeds left in hand. Some sources also use &quot;mtaji&quot; to refer to a group of seeds that, when sown, lead to a capture.\n5. namua: the initial phase of Bao la kiswahili, when seeds &quot;in hand&quot; are introduced into the game.\n6. nemo: the seeds in hand\n7. nyumba: the fourth pit from the right in a player's inner row; usually distinguished by a square pit.\n8. shimo (plur. mashimo): pit(s).\n9. takata: refers to a turn that does not begin with a capture and, thus, that may not include any capture. " />
+
+            <TextView
+                android:id="@+id/rulesEquipment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nEquipment\n\nTraditional bao board from Zanzibar. As in most traditional boards, regular pits (mashimo) are round, while houses (nyumba) are square Bao comprises four rows of eight pits each—in Swahili, pits are termed mashimo (singular: shimo), meaning &quot;holes&quot;. Each player owns a half of the board comprising two adjacent rows.  Some pits that play a special role in the game have specific names. The fourth rightmost pit in the &quot;inner&quot; row of each half board is called nyumba (&quot;house&quot;) or kuu (&quot;main&quot;); in most traditional boards, it is visually distinguished by a square shape. The first and last pit of the inner row are called kichwa (&quot;head&quot;), while the name kimbi applies to both the kichwa and the pits adjacent to them (i.e., the second and next to last pit in the row).  Every player has 32 undifferentiated counters (or &quot;seeds&quot; according to the standard mancala terminology) that are termed kete (&quot;shells&quot;). Note that a similar equipment (a 4x8 board and 64 seeds) is shared by a number of other African mancalas, including Omweso (Uganda) and Isolo (Tanzania).  The initial setup of seeds is one of the elements that distinguish different versions of the game." />
+
+            <TextView
+                android:id="@+id/rulesSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nSetup\n\nInitial setup in Bao la kiswahili In Bao la kiswahili, each player initially places 6 seeds in the nyumba, and two more seeds in the two pits immediately to the right of the nyumba. All the remaining seeds are kept &quot;in hand&quot;. In Malawi, 8 seeds are placed in the nyumba. Thus each player has respectively 22 or 20 seeds in hand at the beginning of the game. These seeds are introduced into the game in a first phase of play called the namua phase.  In Bao la kujifunza, all seeds are placed at startup, two per pit. Players thus have no seeds in hand, and thus there is no namua phase." />
+
+            <TextView
+                android:id="@+id/rulesNamua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nNamua\n\nIn the namua phase, each player begins his or her move by introducing one of the seeds he or she has in hand into the board. The seed must be placed in a non-empty pit in the player's inner row.  A &quot;marker&quot; pit is a pit of the inner row that faces a non-empty opponent's pit. If the first seed is placed in a marker pit, a capture occurs, and the player's turn will be called a mtaji turn. Otherwise, the turn will be called a takata turn. A player must capture if he or she can do that. In a mtaji turn, other captures may occur as a consequence of sowing (see below); in a takata turn, on the other hand, captures are not allowed.  " />
+
+            <TextView
+                android:id="@+id/rulesCaptureAndSowing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nCapture and sowing\n\nA Bao/Omweso board with jade gemstones When a capture occurs, the player takes all the seed from the captured opponent's pit, and relay sows them in his or her rows. The first seed must be sown in a kichwa; if it is sown in the right kichwa, sowing will proceed counterclockwise, while if it is sown in the left kichwa, sowing will be clockwise. For this reason, the right kichwa is also called &quot;counterclockwise kichwa&quot; and the left one &quot;clockwise kichwa&quot;.  The choice of the kichwa to sow from is initially left to the player, with a few exceptions. If capture has occurred in any kimbi, sowing must start from the closest kichwa.  While the player is relay-sowing, if the last seed in any individual sowing is placed in a marker, a new capture occurs. Sowing of the captured seeds will start again from a kichwa. In this case, it is never up to the player to choose which kichwa to sow from, that is: if the capture occurred in a kimbi, sowing must start from the closest kichwa, as above; otherwise, the player must preserve the current clockwise or counterclockwise direction of sowing. That is, if a capture occurs at the end of a clockwise sowing, the newly captured seeds will have to be sown starting from the clockwise kichwa, and vice versa.  If the turn is not a mtaji turn, relay sowing, but captures will never take place: marker pits are treated just like any other pits.  In any case, the turn ends when the last seed in a sowing is dropped in an empty pit." />
+
+            <TextView
+                android:id="@+id/rulesMtaji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nMtaji phase\n\nWhen players are left without seeds in their hands, the namua phase is over, and a new phase of the game begins, which is called the &quot;mtaji&quot; phase. Note that the word &quot;mtaji&quot; is used both to refer to a turn and to a game phase; the two meanings must not be confused. Also note that in Bao la kujifunza, the game begins with the mtaji phase, as there are no seeds in hand.  In the mtaji phase, the player will begin his or her turn taking all the seeds from any pit that has at least 2 seeds, and sows them (either clockwise or counterclockwise). If the last seed of this first sowing is dropped in a marker, a mtaji turn begins, with the same rules described above. Again, if the marker is a kimbi, sowing will be from the closest kichwa; otherwise, the player will have to preserve the clockwise or counterclockwise orientation of the sowing that caused the capture.  As for the namua phase, the player must capture if he or she can do so.  If the first sowing does not lead to a capture, the whole turn is a &quot;takata turn&quot;, exactly as in the namua phase. In this case, the player must start sowing from a pit in the inner row, if this is possible.  As a special rule, if the first sowing is from a pit that has more than 15 seeds, the turn will always be &quot;takata&quot; irrespective of whether the last seed falls in a marker or not." />
+
+            <TextView
+                android:id="@+id/rulesNyumba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nThe nyumba\n\nIn Bao la kiswahili there are some extra rules (not included in Bao la kujifunza) that are related to the nyumba. First, if sowing in a takata turn ends up in the nyumba, the turn is over (there is no &quot;relay-sowing&quot; of the seeds in the nyumba). Second, likewise, if sowing in a mtaji turn ends up in the nyumba, and the nyumba is not a marker, the player may freely choose whether to relay-sow the contents of the nyumba or end his or her turn. Third, if, during the namua phase, the player begins his turn sowing from the nyumba, he will only sow two seeds from the nyumba rather than its whole content. This is called &quot;taxing&quot; the nyumba.  The nyumba loses its special features the first time its contents are sown (taxation excluded), i.e., the first time the player chooses to relay-sow from the nyumba in a mtaji turn, or if it is captured by the opponent.  There are some variations to these rules. For example, taxing the nyumba is sometimes allowed only if there is no other legal way to begin a player's turn. Also, in some versions of the Bao relay-sowing of the nyumba in a mtaji turn is mandatory rather than optiona" />
+
+            <TextView
+                android:id="@+id/rulesEndGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n\nEnd of the game\n\nThe game ends when a player is left without seeds in his or her inner row, or when he or she cannot move anymore. In both cases, this player loses the game." />
+
+            <Button
+                android:id="@+id/rulesVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="video" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
