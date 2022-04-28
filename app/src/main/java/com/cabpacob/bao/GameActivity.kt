@@ -70,7 +70,14 @@ class GameActivity : AppCompatActivity() {
             val intent = Intent(this, ExitActivity::class.java)
             startActivityForResult(intent, 0)
         }
-        model = Model(this, field, hand1, hand2, statusView)
+        model = Model(
+            this,
+            field,
+            hand1,
+            hand2,
+            statusView,
+            intent.getStringExtra("Mode") == "GameWithBot"
+        )
         nextTurn(first = true)
     }
 
@@ -101,5 +108,6 @@ class GameActivity : AppCompatActivity() {
         buttons.forEach {
             it.highlight(ButtonStatus.CAN_BE_CHOSEN)
         }
+        model.waitTurn()
     }
 }

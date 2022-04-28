@@ -15,5 +15,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("Mode", "HotSeat")
             startActivity(intent)
         }
+
+        gameWithBot.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            intent.putExtra("Mode", "GameWithBot")
+            startActivity(intent)
+        }
     }
 }

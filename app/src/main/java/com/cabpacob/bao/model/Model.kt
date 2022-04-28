@@ -10,7 +10,8 @@ class Model(
     buttons: List<List<Button>>,
     firstPlayerHand: TextView,
     secondPlayerHand: TextView,
-    val status: TextView
+    val status: TextView,
+    val gameWithBot: Boolean = false
 ) {
     private val field =
         buttons.mapIndexed { x, row ->
@@ -31,7 +32,11 @@ class Model(
         val firstHand = TextHandler(firstPlayerHand)
         firstPlayer = Player("Player1", firstHand, field.subList(2, 4).reversed())
         val secondHand = TextHandler(secondPlayerHand)
-        secondPlayer = Player("Player2", secondHand, field.subList(0, 2))
+        secondPlayer = if (gameWithBot) {
+            Bot("Bot", secondHand, field.subList(0, 2))
+        } else {
+            Player("Player2", secondHand, field.subList(0, 2))
+        }
 
         field[1][3].value = 6 //second player init
         field[1][2].value = 2
@@ -128,9 +133,23 @@ class Model(
     private var inHand = 0
 
 
+    private var isReadyNextTurn = false
+
     fun nextTurn() {
         waitingAction = WaitingAction.ADD_SEED
         changePlayer()
+        isReadyNextTurn = false
+    }
+
+    fun waitTurn() {
+        if (currentPlayer == CurrentPlayer.SECOND_PLAYER && gameWithBot) {
+            if (!isReadyNextTurn) {
+                (secondPlayer as Bot).makeMove(this)
+            } else {
+                activity.nextTurn(false)
+            }
+        }
+
     }
 
     fun select(row: Int, col: Int) {
@@ -172,6 +191,7 @@ class Model(
                     }
                     else -> {
                         activity.readyNextTurn()
+                        isReadyNextTurn = true
                         status.text = "End turn"
                     }
                 }
@@ -224,6 +244,7 @@ class Model(
                     }
                     else -> {
                         activity.readyNextTurn()
+                        isReadyNextTurn = true
                         status.text = "End turn"
                     }
                 }
@@ -279,12 +300,19 @@ class Model(
                     }
                     else -> {
                         activity.readyNextTurn()
+                        isReadyNextTurn = true
                         status.text = "End turn"
                     }
                 }
             }
         }
 
+        waitTurn()
+
+    }
+
+    fun getButtonsForBot(): List<ButtonHandler> {
+        return field.flatMap { it.asIterable() }.filter { it.status != ButtonStatus.EMPTY }
     }
 
 
