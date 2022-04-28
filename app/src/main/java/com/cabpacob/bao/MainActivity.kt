@@ -21,5 +21,20 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("Mode", "GameWithBot")
             startActivity(intent)
         }
+
+        rulesButton.setOnClickListener {
+            val intent = Intent(this, RulesActivity::class.java)
+            startActivity(intent)
+        }
+
+        aboutButton.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
+
+        statisticsButton.setOnClickListener {
+            val intent = Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
