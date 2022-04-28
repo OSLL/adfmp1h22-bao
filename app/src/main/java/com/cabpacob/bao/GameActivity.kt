@@ -74,6 +74,15 @@ class GameActivity : AppCompatActivity() {
         nextTurn(first = true)
     }
 
+    fun endGame() {
+        val win = model.getOtherPlayer().name
+        val lose = model.getCurrentPlayer().name
+        val intent = Intent(this, EndGameActivity::class.java)
+        intent.putExtra("winner", win)
+        intent.putExtra("loser", lose)
+        startActivity(intent)
+    }
+
     fun readyNextTurn() {
         endTurn.setOnClickListener {
             nextTurn(false)
@@ -86,6 +95,9 @@ class GameActivity : AppCompatActivity() {
             model.nextTurn()
         }
         val buttons = model.getSelectableButtons()
+        if (buttons.isEmpty()) {
+            endGame()
+        }
         buttons.forEach {
             it.highlight(ButtonStatus.CAN_BE_CHOSEN)
         }

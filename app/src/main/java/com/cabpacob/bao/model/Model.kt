@@ -29,9 +29,9 @@ class Model(
 
     init {
         val firstHand = TextHandler(firstPlayerHand)
-        firstPlayer = Player(firstHand, field.subList(2, 4).reversed())
+        firstPlayer = Player("Player1", firstHand, field.subList(2, 4).reversed())
         val secondHand = TextHandler(secondPlayerHand)
-        secondPlayer = Player(secondHand, field.subList(0, 2))
+        secondPlayer = Player("Player2", secondHand, field.subList(0, 2))
 
         field[1][3].value = 6 //second player init
         field[1][2].value = 2
@@ -43,14 +43,14 @@ class Model(
         field[2][6].value = 2
         secondPlayer.hand.value = 22
 
-        status.text = "Player1's turn"
+        status.text = "${firstPlayer.name}'s turn"
     }
 
     fun clearHighlighting() {
         field.forEach { row -> row.forEach { it.highlight(ButtonStatus.EMPTY) } }
     }
 
-    private fun getCurrentPlayer(): Player {
+    fun getCurrentPlayer(): Player {
         return if (currentPlayer == CurrentPlayer.FIRST_PLAYER) firstPlayer else secondPlayer
     }
 
@@ -65,13 +65,12 @@ class Model(
     }
 
     private fun changePlayer() {
-        if (currentPlayer == CurrentPlayer.SECOND_PLAYER) {
-            currentPlayer = CurrentPlayer.FIRST_PLAYER
-            status.text = "Player1's turn"
+        currentPlayer = if (currentPlayer == CurrentPlayer.SECOND_PLAYER) {
+            CurrentPlayer.FIRST_PLAYER
         } else {
-            currentPlayer = CurrentPlayer.SECOND_PLAYER
-            status.text = "Player2's turn"
+            CurrentPlayer.SECOND_PLAYER
         }
+        status.text = "${getCurrentPlayer().name}'s turn"
     }
 
     private fun getNextClockwisePit(current: Pair<Int, Int>): Pair<Int, Int> {
@@ -117,6 +116,7 @@ class Model(
 
 
     fun nextTurn() {
+        waitingAction = WaitingAction.ADD_SEED
         changePlayer()
     }
 
@@ -139,13 +139,13 @@ class Model(
                         inHand = getOtherPlayer().field[actualRow][col].value
                         getOtherPlayer().field[actualRow][col].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
-                        status.text = "Select kichwa"
+                        status.text = "Select kichwa\n You have $inHand seeds"
 
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
                     }
-                    getCurrentPlayer().field[actualRow][col].value > 0 -> {
+                    getCurrentPlayer().field[actualRow][col].value > 1 -> {
                         lastSelect = Pair(actualRow, col)
                         val coordinates = Pair(actualRow, col)
 
@@ -155,10 +155,9 @@ class Model(
                         inHand = getCurrentPlayer().field[actualRow][col].value
                         getCurrentPlayer().field[actualRow][col].value = 0
                         waitingAction = WaitingAction.SELECT_PIT
-                        status.text = "Select pit"
+                        status.text = "Select pit\nYou have $inHand seeds"
                     }
                     else -> {
-                        changePlayer()
                         activity.readyNextTurn()
                         status.text = "End turn"
                     }
@@ -183,7 +182,6 @@ class Model(
                 while (inHand > 0) {
                     inHand--
                     getPit(current).value++
-                    current = nextFunction(current)
                     if (inHand > 0) {
                         current = nextFunction(current)
                     }
@@ -194,12 +192,12 @@ class Model(
                         inHand = getOtherPlayer().field[current.first][current.second].value
                         getOtherPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
-                        status.text = "Select kichwa"
+                        status.text = "Select kichwa\n You have $inHand seeds"
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
                     }
-                    getCurrentPlayer().field[current.first][current.second].value > 0 -> {
+                    getCurrentPlayer().field[current.first][current.second].value > 1 -> {
                         lastSelect = current
                         val coordinates = current
 
@@ -209,7 +207,7 @@ class Model(
                         inHand = getCurrentPlayer().field[current.first][current.second].value
                         getCurrentPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_PIT
-                        status.text = "Select pit"
+                        status.text = "Select pit\nYou have $inHand seeds"
                     }
                     else -> {
                         activity.readyNextTurn()
@@ -243,16 +241,16 @@ class Model(
                 }
 
                 when {
-                    current.first == 1 && getOtherPlayer().field[current.first][current.second].value > 0 -> {
+                    current.first == 1 && getOtherPlayer().field[current.first][current.second].value > 1  -> {
                         inHand = getOtherPlayer().field[current.first][current.second].value
                         getOtherPlayer().field[current.first][current.second].value = 0
                         waitingAction = WaitingAction.SELECT_KICHWA
-                        status.text = "Select kichwa"
+                        status.text = "Select kichwa\nYou have $inHand seeds"
                         val fieldRow = getCurrentPlayer().field[actualRow]
                         fieldRow[0].highlight(ButtonStatus.CAN_BE_CHOSEN)
                         fieldRow[7].highlight(ButtonStatus.CAN_BE_CHOSEN)
                     }
-                    getCurrentPlayer().field[current.first][current.second].value > 0 -> {
+                    getCurrentPlayer().field[current.first][current.second].value > 1 -> {
                         lastSelect = current
                         val coordinates = current
 
@@ -260,11 +258,13 @@ class Model(
 
                         getPit(getPrevClockwisePit(coordinates)).highlight(ButtonStatus.CAN_BE_CHOSEN)
 
+                        inHand = getCurrentPlayer().field[current.first][current.second].value
+                        getCurrentPlayer().field[current.first][current.second].value = 0
+
                         waitingAction = WaitingAction.SELECT_PIT
-                        status.text = "Select pit"
+                        status.text = "Select pit\nYou have $inHand seeds"
                     }
                     else -> {
-                        changePlayer()
                         activity.readyNextTurn()
                         status.text = "End turn"
                     }
