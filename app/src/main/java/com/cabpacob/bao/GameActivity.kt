@@ -1,13 +1,14 @@
 package com.cabpacob.bao
 
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.cabpacob.bao.model.ButtonStatus
 import com.cabpacob.bao.model.Model
 import kotlinx.android.synthetic.main.activity_game.*
+
 
 class GameActivity : AppCompatActivity() {
     private lateinit var model: Model
@@ -99,7 +100,19 @@ class GameActivity : AppCompatActivity() {
 
     fun readyNextTurn() {
         endTurn.setOnClickListener {
-            nextTurn(false)
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            builder.setTitle("New turn")
+            builder.setCancelable(true)
+            builder.setPositiveButton(
+                "Ok"
+            ) { dialog, _ ->
+
+                // Кнопка ОК
+                dialog.dismiss() // Отпускает диалоговое окно
+                nextTurn(false)
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
     }
 
