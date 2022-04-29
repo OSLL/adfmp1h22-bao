@@ -72,6 +72,19 @@ class GameActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)
         }
 
+        pauseButton.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            builder.setTitle("Pause")
+            builder.setCancelable(true)
+            builder.setPositiveButton(
+                "Continue"
+            ) { dialog, _ ->
+                dialog.dismiss()
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
         val mode = intent.getStringExtra("Mode")
         val firstName = intent.getStringExtra("First")
         val secondName = intent.getStringExtra("Second")
@@ -106,9 +119,7 @@ class GameActivity : AppCompatActivity() {
             builder.setPositiveButton(
                 "Ok"
             ) { dialog, _ ->
-
-                // Кнопка ОК
-                dialog.dismiss() // Отпускает диалоговое окно
+                dialog.dismiss()
                 nextTurn(false)
             }
             val dialog: AlertDialog = builder.create()
