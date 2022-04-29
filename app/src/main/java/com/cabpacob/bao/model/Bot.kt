@@ -6,9 +6,11 @@ class Bot(name: String, hand: TextHandler, field: List<List<ButtonHandler>>) :
             val buttons = model.getButtonsForBot()
 
 //            val (x, y) = buttons[0].coordinates
-            buttons[0].let {
-                it.button.performClick()
-                it.button.performClick()
+            if (buttons.isNotEmpty()) {
+                buttons[0].let {
+                    it.button.performClick()
+                    it.button.performClick()
+                }
             }
         }
 }

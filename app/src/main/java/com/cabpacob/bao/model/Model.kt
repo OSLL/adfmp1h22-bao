@@ -8,7 +8,9 @@ import com.cabpacob.bao.GameActivity
 class Model(
     private val activity: GameActivity,
     buttons: List<List<Button>>,
+    firstName: String,
     firstPlayerHand: TextView,
+    secondName: String?,
     secondPlayerHand: TextView,
     val status: TextView,
     val gameWithBot: Boolean = false
@@ -30,12 +32,12 @@ class Model(
 
     init {
         val firstHand = TextHandler(firstPlayerHand)
-        firstPlayer = Player("Player1", firstHand, field.subList(2, 4).reversed())
+        firstPlayer = Player(firstName, firstHand, field.subList(2, 4).reversed())
         val secondHand = TextHandler(secondPlayerHand)
         secondPlayer = if (gameWithBot) {
             Bot("Bot", secondHand, field.subList(0, 2))
         } else {
-            Player("Player2", secondHand, field.subList(0, 2))
+            Player(secondName!!, secondHand, field.subList(0, 2))
         }
 
         field[1][3].value = 6 //second player init

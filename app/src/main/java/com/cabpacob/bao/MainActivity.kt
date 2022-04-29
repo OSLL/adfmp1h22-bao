@@ -11,14 +11,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         hotSeat.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
-            intent.putExtra("Mode", "HotSeat")
+            val intent = Intent(this, GetUsernameHotSeatActivity::class.java)
             startActivity(intent)
         }
 
         gameWithBot.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra("Mode", "GameWithBot")
+            intent.putExtra("First", "Player")
             startActivity(intent)
         }
 
